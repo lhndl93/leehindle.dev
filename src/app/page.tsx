@@ -266,18 +266,23 @@ export default function Home() {
                       <div className="absolute inset-0 bg-grid-white opacity-[0.02] rounded-xl" />
                       <div className="relative space-y-4">
                         <div className="flex items-center gap-3">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-400/10 text-blue-400 ring-1 ring-inset ring-blue-400/20">
-                            Coming Soon
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-400/10 text-emerald-400 ring-1 ring-inset ring-emerald-400/20">
+                            Latest
                           </span>
                         </div>
-                        <h3 className="text-lg font-semibold text-zinc-200">Next Project</h3>
+                        <h3 className="text-lg font-semibold text-zinc-200">UK Journey Time Calculator</h3>
                         <p className="text-sm text-zinc-400">
-                          Stay tuned for my next project. Something exciting is in the works!
+                          A sophisticated journey time calculator for UK routes with intelligent traffic predictions
+                          and interactive map visualization.
                         </p>
                         <div className="flex items-center gap-4">
-                          <span className="text-sm text-zinc-500">
-                            In Development
-                          </span>
+                          <Link
+                            href="/projects/journey-time-calculator"
+                            className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors group flex items-center gap-1"
+                          >
+                            View details
+                            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          </Link>
                         </div>
                       </div>
                     </motion.div>

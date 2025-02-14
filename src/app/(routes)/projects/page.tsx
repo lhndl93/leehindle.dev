@@ -30,6 +30,17 @@ const projects: Project[] = [
     role: "Full Stack Developer",
     demoUrl: "https://leehindle.dev",
     slug: "leehindle-dev"
+  },
+  {
+    title: "UK Journey Time Calculator",
+    description: "A modern journey time calculation tool that provides accurate driving time estimates between UK locations, considering time-based traffic patterns and known congestion points.",
+    tech: ["Next.js", "TypeScript", "Leaflet", "OSRM API", "Tailwind CSS", "Radix UI"],
+    link: "https://github.com/lhndl93/journey-time-estimator",
+    image: "/projects/journey-time-calculator.png",
+    status: "Live",
+    lastUpdated: "2024-02",
+    role: "Full Stack Developer",
+    slug: "journey-time-calculator"
   }
 ];
 
