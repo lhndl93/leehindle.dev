@@ -37,7 +37,7 @@ const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Leaflet", "OSRM API", "Tailwind CSS", "Radix UI"],
     link: "https://github.com/lhndl93/journey-time-estimator",
     image: "/projects/journey-time-calculator.png",
-    status: "Live",
+    status: "In Development",
     lastUpdated: "2024-02",
     role: "Full Stack Developer",
     slug: "journey-time-calculator"

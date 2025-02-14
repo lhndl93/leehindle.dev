@@ -58,8 +58,8 @@ export default function ProjectPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-400/10 text-emerald-400 ring-1 ring-inset ring-emerald-400/20">
-                  Live
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-400/10 text-blue-400 ring-1 ring-inset ring-blue-400/20">
+                  In Development
                 </span>
                 <span className="text-sm text-zinc-500">
                   Last updated: 2024-02
@@ -309,7 +309,7 @@ export default function ProjectPage() {
                       </li>
                       <li className="flex justify-between text-zinc-400">
                         <span>Status:</span>
-                        <span className="text-emerald-400">Live</span>
+                        <span className="text-blue-400">In Development</span>
                       </li>
                       <li className="flex justify-between text-zinc-400">
                         <span>Version:</span>
