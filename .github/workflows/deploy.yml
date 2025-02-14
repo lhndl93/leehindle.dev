@@ -1,0 +1,87 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '20.11.0'
+  APP_PORT: 3000
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+        
+      - name: Build
+        run: npm run build
+        
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            # Load NVM
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            # Set deployment variables
+            DEPLOY_PATH="/var/www/leehindle.dev"
+            PM2_APP="leehindle-dev"
+            NODE_ENV=production
+            PORT=${{ env.APP_PORT }}
+            
+            echo "🚀 Starting deployment..."
+            
+            # Configure Git to use SSH
+            git config --global url."git@github.com:".insteadOf "https://github.com/"
+            
+            # Navigate to project directory
+            cd $DEPLOY_PATH
+            
+            # Update codebase
+            echo "📥 Updating codebase..."
+            git fetch origin
+            git reset --hard origin/main
+            
+            # Install dependencies and build
+            echo "📦 Installing dependencies..."
+            nvm use ${{ env.NODE_VERSION }}
+            npm ci --prefer-offline --no-audit --legacy-peer-deps
+            
+            echo "🏗️ Building application..."
+            npm run build
+            
+            # Update PM2 process
+            echo "🔄 Restarting service..."
+            pm2 delete $PM2_APP > /dev/null 2>&1 || true
+            PORT=$PORT NODE_ENV=$NODE_ENV pm2 start npm --name $PM2_APP -- start
+            pm2 save
+            
+            # Wait for application to start
+            echo "⏳ Waiting for application to start..."
+            sleep 5
+            
+            # Check if application is running
+            if curl -s http://localhost:$PORT > /dev/null; then
+              echo "✅ Application is running on port $PORT"
+            else
+              echo "❌ Application failed to start"
+              exit 1
+            fi
+            
+            echo "✨ Deployment completed successfully!" 
