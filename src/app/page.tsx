@@ -66,8 +66,8 @@ export default function Home() {
                 <div className="flex lg:flex-col items-center justify-center gap-6">
                   <motion.a
                     href="https://github.com/lhndl93"
-                    target="_blank"
-                    rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
                     className="p-2 text-zinc-400 hover:text-zinc-200 transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -76,8 +76,8 @@ export default function Home() {
                   </motion.a>
                   <motion.a
                     href="https://linkedin.com/in/leehindle"
-                    target="_blank"
-                    rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
                     className="p-2 text-zinc-400 hover:text-zinc-200 transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -134,8 +134,8 @@ export default function Home() {
                         </Link>
                         <motion.a
                           href="https://github.com/lhndl93"
-                          target="_blank"
-                          rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
                           className={`${buttonStyles.secondary} w-full sm:w-auto justify-center group`}
                           whileHover={{ scale: 1.05, y: -2 }}
                           whileTap={{ scale: 0.95 }}
@@ -286,7 +286,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+    </div>
       </main>
     </>
   );

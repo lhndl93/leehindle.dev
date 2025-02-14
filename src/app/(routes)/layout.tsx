@@ -1,6 +1,5 @@
 "use client";
 
-import { ParticlesBackground } from "@/components/ui/particles-background";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -12,9 +11,10 @@ export default function DetailLayout({
 }) {
   return (
     <>
-      {/* Fixed Background with Particles */}
+      {/* Fixed Background */}
       <div className="fixed inset-0 z-0 bg-zinc-950">
-        <ParticlesBackground />
+        <div className="absolute inset-0 bg-grid-white opacity-[0.02]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-purple-500/10 to-transparent" />
       </div>
 
       {/* Back Navigation */}
